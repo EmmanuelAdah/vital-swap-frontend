@@ -234,7 +234,7 @@
 @media (max-width: 640px) {
   .account-card {
     padding: 16px;
-    max-width: 90%;
+    max-width: 100%;
   }
 
   .account-card-header {
