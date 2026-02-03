@@ -1,0 +1,65 @@
+.help-card {
+  right: 20px;
+  position: relative;
+  background: linear-gradient(135deg, #1e40af 0%, #3b82f6 100%);
+  border-radius: 16px;
+  padding: 32px;
+  color: white;
+  text-align: center;
+  max-width: 280px;
+  margin: 32px auto 0;
+  box-shadow: 0 4px 16px rgba(30, 64, 175, 0.2);
+}
+
+.help-title {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  line-height: 1.3;
+}
+
+.help-text {
+  font-size: 14px;
+  opacity: 0.95;
+  margin: 0 0 24px 0;
+  line-height: 1.6;
+}
+
+.btn-help {
+  background: white;
+  color: #1e40af;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.btn-help:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn-help:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .help-card {
+    max-width: 300px;
+    padding: 24px 20px;
+    margin: 24px auto 0;
+  }
+
+  .help-title {
+    font-size: 20px;
+  }
+
+  .help-text {
+    font-size: 13px;
+    margin-bottom: 20px;
+  }
+}
