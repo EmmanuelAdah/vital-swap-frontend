@@ -1,11 +1,12 @@
 import React from 'react';
+import {Info} from 'lucide-react';
 import '../styles/InfoCard.css';
 
 const InfoCard = () => {
   return (
     <div className="info-card">
       <div className="info-icon">
-        <span className="material-icons">info</span>
+        <span className="material-icons"><Info /></span>
       </div>
       <div className="info-content">
         <h3 className="info-title">About Settlement Accounts</h3>
