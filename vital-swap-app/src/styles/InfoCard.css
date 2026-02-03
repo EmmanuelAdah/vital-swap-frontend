@@ -1,4 +1,5 @@
 .info-card {
+  max-width: 90%;
   background: #eff6ff;
   border: 1px solid #bfdbfe;
   border-radius: 12px;

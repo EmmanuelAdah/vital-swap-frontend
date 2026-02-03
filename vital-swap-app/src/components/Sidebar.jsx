@@ -1,4 +1,15 @@
 import React, { useState } from 'react';
+import {
+  Settings,
+  LayoutDashboard,
+  Landmark,
+  ScrollText,
+  Code,
+  Link2,
+  ShieldCheck,
+  Webhook,
+  ChevronDown
+} from 'lucide-react';
 import '../styles/Sidebar.css';
 
 const Sidebar = () => {
@@ -6,10 +17,10 @@ const Sidebar = () => {
   const [settingsExpanded, setSettingsExpanded] = useState(true);
 
   const menuItems = [
-    { id: 'dashboard', icon: 'dashboard', label: 'Dashboard' },
-    { id: 'transactions', icon: 'description', label: 'Transactions' },
-    { id: 'accounts', icon: 'business', label: 'Accounts' },
-    { id: 'payment-link', icon: 'link', label: 'Payment Link' },
+    { id: 'dashboard', icon: <LayoutDashboard />, label: 'Dashboard' },
+    { id: 'transactions', icon: <ScrollText />, label: 'Transactions' },
+    { id: 'accounts', icon: <Landmark />, label: 'Accounts' },
+    { id: 'payment-link', icon: <Link2 />, label: 'Payment Link' },
   ];
 
   const configItems = [
@@ -20,9 +31,9 @@ const Sidebar = () => {
   ];
 
   const bottomItems = [
-    { id: 'webhooks', icon: 'webhook', label: 'Webhooks' },
-    { id: 'due-diligence', icon: 'verified_user', label: 'Due Diligence' },
-    { id: 'api-docs', icon: 'code', label: 'API Docs' },
+    { id: 'webhooks', icon: <Webhook />, label: 'Webhooks' },
+    { id: 'due-diligence', icon: <ShieldCheck />, label: 'Due Diligence' },
+    { id: 'api-docs', icon: <Code />, label: 'API Docs' },
   ];
 
   return (
@@ -59,10 +70,10 @@ const Sidebar = () => {
             className={`menu-item expandable ${settingsExpanded ? 'expanded' : ''}`}
             onClick={() => setSettingsExpanded(!settingsExpanded)}
           >
-            <span className="material-icons menu-icon">settings</span>
-            <span className="menu-text">Settings</span>
+            <span className="menu-text"><Settings /></span>
+            <span className="material-icons menu-icon">Settings</span>
             <span className="material-icons expand-icon">
-              {settingsExpanded ? 'expand_less' : 'expand_more'}
+              {settingsExpanded ? <ChevronDown /> : <ChevronDown />}
             </span>
           </div>
 

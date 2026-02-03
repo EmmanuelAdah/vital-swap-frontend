@@ -1,5 +1,5 @@
 import React from 'react';
-import {} from 'lucide-react'
+import {Pencil, Trash2, Landmark} from 'lucide-react'
 import '../styles/AccountCard.css';
 
 const AccountCard = ({ account, onSetPrimary, onDelete, onEdit }) => {
@@ -17,7 +17,7 @@ const AccountCard = ({ account, onSetPrimary, onDelete, onEdit }) => {
         </svg>
       );
     }
-    return <span className="material-icons">account_balance</span>;
+    return <span className="material-icons"><Landmark /></span>;
   };
 
   return (
@@ -39,14 +39,14 @@ const AccountCard = ({ account, onSetPrimary, onDelete, onEdit }) => {
             onClick={() => onEdit(account.id)}
             aria-label="Edit account"
           >
-            <span className="material-icons">edit</span>
+            <span className="material-icons"><Pencil /></span>
           </button>
           <button
             className="icon-btn"
             onClick={() => onDelete(account.id)}
             aria-label="Delete account"
           >
-            <span className="material-icons">delete</span>
+            <span className="material-icons"><Trash2 /></span>
           </button>
         </div>
       </div>
@@ -59,7 +59,7 @@ const AccountCard = ({ account, onSetPrimary, onDelete, onEdit }) => {
             onClick={handleCopyAccount}
             aria-label="Copy account number"
           >
-            <span className="material-icons">content_copy</span>
+            <span className="material-icons"><Landmark /></span>
           </button>
         </div>
 
