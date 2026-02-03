@@ -1,0 +1,272 @@
+.account-card {
+  max-width: 60%;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.2s ease;
+}
+
+.account-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.account-card-header {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  align-items: flex-start;
+}
+
+.bank-icon {
+  width: 48px;
+  height: 48px;
+  background: #f1f5f9;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #64748b;
+}
+
+.bank-icon .material-icons {
+  font-size: 28px;
+}
+
+.bank-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.bank-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.bank-name-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+}
+
+.bank-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1a202c;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.primary-badge {
+  background: #22c55e;
+  color: white;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
+}
+
+.account-holder {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.4;
+}
+
+.account-actions {
+  display: flex;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.icon-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: transparent;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: #64748b;
+}
+
+.icon-btn:hover {
+  background: #f1f5f9;
+  color: #1a202c;
+}
+
+.icon-btn:active {
+  transform: scale(0.95);
+}
+
+.icon-btn .material-icons {
+  font-size: 18px;
+}
+
+.account-card-body {
+  border-top: 1px solid #f1f5f9;
+  padding-top: 16px;
+}
+
+.account-number-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  gap: 12px;
+}
+
+.account-number {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a202c;
+  letter-spacing: 1px;
+  font-variant-numeric: tabular-nums;
+}
+
+.copy-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: #f1f5f9;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: #64748b;
+  flex-shrink: 0;
+}
+
+.copy-btn:hover {
+  background: #e2e8f0;
+  color: #1a202c;
+}
+
+.copy-btn:active {
+  transform: scale(0.95);
+}
+
+.copy-btn .material-icons {
+  font-size: 16px;
+}
+
+.account-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.account-status {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.verified-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #22c55e;
+  font-weight: 500;
+}
+
+.verified-dot {
+  width: 6px;
+  height: 6px;
+  background: #22c55e;
+  border-radius: 50%;
+}
+
+.settlement-type {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.currency-badge {
+  background: #f1f5f9;
+  color: #64748b;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.set-primary-btn {
+  background: transparent;
+  color: #1e40af;
+  border: 1px solid #1e40af;
+  padding: 6px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  white-space: nowrap;
+}
+
+.set-primary-btn:hover {
+  background: #eff6ff;
+}
+
+.set-primary-btn:active {
+  transform: scale(0.98);
+}
+
+@media (max-width: 640px) {
+  .account-card {
+    padding: 16px;
+    max-width: 90%;
+  }
+
+  .account-card-header {
+    flex-wrap: wrap;
+  }
+
+  .bank-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .bank-name {
+    font-size: 15px;
+  }
+
+  .account-actions {
+    width: 100%;
+    justify-content: flex-end;
+    margin-top: 8px;
+  }
+
+  .account-number {
+    font-size: 16px;
+  }
+
+  .account-card-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .set-primary-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
