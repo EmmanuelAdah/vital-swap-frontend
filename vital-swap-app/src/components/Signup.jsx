@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import '../styles/Auth.css';
 import axios from "axios";
 
+const BASE_URI = import.meta.env.VITE_BASE_URI;
+
 const Signup = () => {
   const [formData, setFormData] = useState({
     firstName: '', lastName: '', email: '', role: '', password: '', confirmPassword: ''
@@ -26,16 +28,32 @@ const Signup = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:8000/api/auth/signup',
-          formData
+      const response = await axios.post(`${BASE_URI}/api/auth/signup`, {
+          body: formData
+        }
       );
-      console.log("Success:", response.data);
+    saveSessionWithTimer(response.data.user, response.data.token);
+    window.location.href = "/accouns";
     } catch (err) {
       setError(err.response?.data?.message || 'Signup failed. Please try again.');
     } finally {
       setLoading(false);
     }
   };
+
+  const saveSessionWithTimer = (user, token) => {
+      const hoursToLive = 1; // Set session for 1 hour
+      const expiryTime = Date.now() + hoursToLive * 60 * 60 * 1000;
+
+      const sessionData = {
+        id: user._id,
+        email: user.email,
+        name: `${user.firstName} ${user.lastName}`.trim(),
+        token: token,
+        expiry: expiryTime // The "Timer"
+      };
+      localStorage.setItem('user_session', JSON.stringify(sessionData));
+    };
 
   return (
     <div className="auth-overlay">
@@ -82,14 +100,13 @@ const Signup = () => {
             <label>Confirm Password</label>
             <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange} placeholder="••••••••" required />
           </div>
-
+           <p className="auth-footer">
+            Already have an account? <Link to="/login">Sign In</Link>
+          </p>
           <button type="submit" className="auth-button" disabled={loading}>
             {loading ? 'Processing...' : 'Create Account'}
           </button>
 
-          <p className="auth-footer">
-            Already have an account? <Link to="/login">Sign In</Link>
-          </p>
         </form>
       </div>
     </div>
