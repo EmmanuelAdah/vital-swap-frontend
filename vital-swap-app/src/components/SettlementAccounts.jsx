@@ -6,6 +6,8 @@ import AccountCard from './AccountCard';
 import HelpCard from './HelpCard';
 import '../styles/SettlementAccounts.css';
 
+const BASE_URL= import.meta.env.VITE_BASE_URI
+
 const SettlementAccounts = () => {
   const [accounts, setAccounts] = useState([
     {
