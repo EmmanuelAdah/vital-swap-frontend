@@ -1,4 +1,7 @@
-/* Auth Container */
+body{
+  background-color: #666688;
+  align-items: center;
+}
 .auth-container {
   min-height: 100vh;
   display: flex;
@@ -9,13 +12,14 @@
 }
 
 .auth-card {
-  background: white;
+  background-color: #525292;
   border-radius: 12px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 480px;
   padding: 40px;
   animation: slideUp 0.4s ease-out;
+  height: 100vh;
 }
 
 @keyframes slideUp {
