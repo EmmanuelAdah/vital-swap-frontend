@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import '../styles/Auth.css';
+import { saveSessionWithTimer } from '../utils/auth.jsx';
 import axios from "axios";
 
 const BASE_URI = import.meta.env.VITE_BASE_URI;
@@ -28,10 +29,7 @@ const Signup = () => {
     }
 
     try {
-      const response = await axios.post(`${BASE_URI}/api/auth/signup`, {
-          body: formData
-        }
-      );
+      const response = await axios.post(`${BASE_URI}/api/auth/signup`, formData);
     saveSessionWithTimer(response.data.user, response.data.token);
     window.location.href = "/accouns";
     } catch (err) {
@@ -40,20 +38,6 @@ const Signup = () => {
       setLoading(false);
     }
   };
-
-  const saveSessionWithTimer = (user, token) => {
-      const hoursToLive = 1; // Set session for 1 hour
-      const expiryTime = Date.now() + hoursToLive * 60 * 60 * 1000;
-
-      const sessionData = {
-        id: user._id,
-        email: user.email,
-        name: `${user.firstName} ${user.lastName}`.trim(),
-        token: token,
-        expiry: expiryTime // The "Timer"
-      };
-      localStorage.setItem('user_session', JSON.stringify(sessionData));
-    };
 
   return (
     <div className="auth-overlay">
