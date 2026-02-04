@@ -1,0 +1,91 @@
+body{
+  background-color: #389098;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.bank-card-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.bank-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  width: 100%;
+  max-width: 500px;
+  padding: 30px;
+  border: 1px solid #eaeaea;
+}
+
+.bank-card-header h3 { margin: 0; color: #1a1a1a; font-size: 1.5rem; }
+.bank-card-header p { color: #717171; font-size: 0.9rem; margin: 8px 0 24px; }
+
+.bank-form .input-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.bank-form label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #4b5563;
+  margin-bottom: 6px;
+}
+
+.bank-form input, .bank-form select {
+  padding: 12px;
+  border: 1.5px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 16px; /* Essential for iOS to prevent auto-zoom */
+  transition: all 0.2s ease;
+}
+
+.bank-form input:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.form-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.alert {
+  padding: 12px;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.alert.error { background: #fee2e2; color: #b91c1c; }
+.alert.success { background: #dcfce7; color: #15803d; }
+
+@media (max-width: 480px) {
+  .form-split {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .bank-card {
+    padding: 20px;
+    box-shadow: none; /* Cleaner look for small screens */
+  }
+}
