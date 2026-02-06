@@ -1,12 +1,12 @@
 import {createBrowserRouter } from "react-router-dom";
-import Signup from "../components/Signup.jsx";
+import Authentication from "../components/Authentication.jsx";
 import Accounts from "../components/SettlementAccounts.jsx"
 import AddAccount from "../components/AddAccount.jsx"
 
 const router = createBrowserRouter([
     {
         path: "/",
-        element: <Signup />,
+        element: <Authentication />,
     },
     {
         path: "/accounts",
