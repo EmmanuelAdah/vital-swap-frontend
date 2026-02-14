@@ -4,7 +4,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #667eea 0%, #8f64bb 100%);
   padding: 20px;
 }
 
@@ -44,7 +44,7 @@
 
 .auth-header p {
   font-size: 14px;
-  color: #718096;
+  color: #5d6e71;
   margin: 0;
 }
 

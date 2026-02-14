@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import axiox from 'axios'
+import axios from "axios";
 
-const AuthenticationFlow = () => {
+const Authentication = () => {
+
+  const BASE_URL = import.meta.env.VITE_BASE_URL
+
   const [currentView, setCurrentView] = useState('login'); // 'login', 'register', 'forgot', 'verify'
   const [formData, setFormData] = useState({
     firstName: '',
@@ -10,12 +13,12 @@ const AuthenticationFlow = () => {
     email: '',
     password: '',
     confirmPassword: '',
-    role: 'User',
+    role: 'user',
     verificationCode: ''
   });
 
   // Check if screen is desktop size (640px and above)
-  const isDesktop = useMediaQuery('(min-width: 640px)');
+  const isDesktop = useMediaQuery('(minWidth: 640px)');
 
   const handleInputChange = (e) => {
     setFormData({
@@ -24,15 +27,64 @@ const AuthenticationFlow = () => {
     });
   };
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log('Login:', { email: formData.email, password: formData.password });
+    try {
+      const userDetails = await axios.post(`${BASE_URL}/auth/signin`, {
+        email: formData.email,
+        password: formData.password
+      })
+      saveUserData(userDetails)
+    } catch(error){
+      alert(error.response?.data?.message)
+    }
   };
 
-  const handleRegister = (e) => {
+  const handleRegister = async (e) => {
+    try{
     e.preventDefault();
-    console.log('Register:', formData);
+    const {
+      firstName,
+      lastName,
+      email,
+      password,
+      confirmPassword,
+      role } = formData;
+    if (password !== confirmPassword) {
+      alert('Passwords do not match!');
+      return;
+    }
+    const saveUserDetails = await axios.post(`${BASE_URL}/auth/signup`,
+        {
+          firstName,
+          lastName,
+          email,
+          password,
+          role
+        });
+    if (saveUserDetails.status === 201) {
+       saveUserData(saveUserDetails)
+    }
+    }catch (err){
+      alert(err.response?.data?.message)
+    }
   };
+
+  const saveUserData = (user) => {
+    const dateTime = new Date()
+    const ttl = 24 * 60 * 60 * 1000
+    const userData = {
+        'id': user.data?.user?.id,
+        'name': user.data?.user?.name,
+        'email': user.data?.user?.email,
+        'role': user.data?.user?.role,
+        'imageUrl': user.data?.user?.imageUrl,
+        'token': user.data.token,
+      'expiry': dateTime.getTime() + ttl
+      }
+      sessionStorage.setItem('user', JSON.stringify(userData));
+      window.location.href = '/dashboard';
+  }
 
   const handleForgotPassword = (e) => {
     e.preventDefault();
@@ -633,7 +685,7 @@ const styles = {
     margin: 'auto',
     maxHeight: '90vh',
     overflowY: 'auto',
-    '@media (min-width: 640px)': {
+    '@media(minWidth: 640px)': {
       padding: '48px',
       maxHeight: 'none',
       overflowY: 'visible',
@@ -816,4 +868,4 @@ const useMediaQuery = (query) => {
   return matches;
 };
 
-export default AuthenticationFlow;
+export default Authentication;

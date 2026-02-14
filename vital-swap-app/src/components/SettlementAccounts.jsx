@@ -53,6 +53,7 @@ const SettlementAccounts = () => {
   const handleDelete = (accountId) => {
     if (window.confirm('Are you sure you want to delete this account?')) {
       setAccounts(accounts.filter(acc => acc.id !== accountId));
+
     }
   };
 
@@ -81,7 +82,6 @@ const SettlementAccounts = () => {
               Add New Account
             </button>
           </div>
-
           <InfoCard />
 
         <div className="accounts-section">

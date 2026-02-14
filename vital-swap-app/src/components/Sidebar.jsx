@@ -8,7 +8,8 @@ import {
   Link2,
   ShieldCheck,
   Webhook,
-  ChevronDown
+  ChevronDown,
+  LogOut
 } from 'lucide-react';
 import '../styles/Sidebar.css';
 
@@ -35,6 +36,11 @@ const Sidebar = () => {
     { id: 'due-diligence', icon: <ShieldCheck />, label: 'Due Diligence' },
     { id: 'api-docs', icon: <Code />, label: 'API Docs' },
   ];
+
+  const handleLogout=()=> {
+      sessionStorage.removeItem('user')
+      window.location.href='/'
+  }
 
   return (
     <div className="sidebar">
@@ -106,10 +112,10 @@ const Sidebar = () => {
         </div>
       </div>
 
-      <div className="sidebar-footer">
+      <div className="sidebar-footer" onClick={handleLogout}>
         <button className="logout-btn">
           <span className="material-icons logout-icon">logout</span>
-          <span>Logout</span>
+          <span ><LogOut /></span>
         </button>
       </div>
     </div>
