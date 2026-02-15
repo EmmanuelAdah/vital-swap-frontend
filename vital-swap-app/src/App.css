@@ -1,3 +1,5 @@
+@import "tailwindcss";
+
 /* Auth Container */
 .auth-container {
   min-height: 100vh;
@@ -122,20 +124,6 @@
 .forgot-password a:hover {
   color: #764ba2;
   text-decoration: underline;
-}
-
-/* Button */
-.auth-button {
-  padding: 14px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 16px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.3s;
-  margin-top: 10px;
 }
 
 .auth-button:hover {

@@ -65,8 +65,7 @@
 
 .menu-item {
   display: flex;
-  align-items: center;
-  gap: 12px;
+  gap: 8px;
   padding: 10px 12px;
   border-radius: 8px;
   cursor: pointer;
