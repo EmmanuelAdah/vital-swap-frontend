@@ -8,7 +8,8 @@ import {
   Link2,
   ShieldCheck,
   Webhook,
-  ChevronDown
+  ChevronDown,
+  LogOut
 } from 'lucide-react';
 import '../styles/Sidebar.css';
 
@@ -35,6 +36,11 @@ const Sidebar = () => {
     { id: 'due-diligence', icon: <ShieldCheck />, label: 'Due Diligence' },
     { id: 'api-docs', icon: <Code />, label: 'API Docs' },
   ];
+
+  const handleLogout=()=> {
+      sessionStorage.removeItem('user')
+      window.location.href='/'
+  }
 
   return (
     <div className="sidebar">
@@ -64,27 +70,48 @@ const Sidebar = () => {
           ))}
         </div>
 
-        <div className="menu-section">
-          <div className="menu-label">CONFIGURATION</div>
-          <div
-            className={`menu-item expandable ${settingsExpanded ? 'expanded' : ''}`}
-            onClick={() => setSettingsExpanded(!settingsExpanded)}
-          >
-            <span className="menu-text"><Settings /></span>
-            <span className="material-icons menu-icon">Settings</span>
-            <span className="material-icons expand-icon">
-              {settingsExpanded ? <ChevronDown /> : <ChevronDown />}
-            </span>
+        <div className="menu-section mb-6">
+          {/* SECTION LABEL */}
+          <div className="px-6 py-2 text-[11px] font-bold text-gray-400 uppercase tracking-widest">
+            Configuration
           </div>
 
+          {/* SETTINGS PARENT ITEM */}
+          <div
+            className={`group flex items-center justify-between px-6 py-3 cursor-pointer transition-colors ${
+              settingsExpanded ? 'text-blue-600' : 'text-gray-500 hover:bg-gray-50'
+            }`}
+            onClick={() => setSettingsExpanded(!settingsExpanded)}
+          >
+            <div className="flex items-center gap-4">
+              {/* Settings Icon */}
+              <Settings size={20} strokeWidth={2} />
+              <span className="text-[15px] font-medium">Settings</span>
+            </div>
+
+            {/* Chevron - Rotates when expanded */}
+            <div className={`transition-transform duration-300 ${settingsExpanded ? 'rotate-180' : ''}`}>
+              <ChevronDown size={18} className="text-gray-400" />
+            </div>
+          </div>
+
+          {/* SUBMENU ITEMS */}
           {settingsExpanded && (
-            <div className="submenu">
-              {configItems.map(item => (
+            <div className="flex flex-col mt-1">
+              {configItems.map((item) => (
                 <div
                   key={item.id}
-                  className={`submenu-item ${activeItem === item.id ? 'active' : ''}`}
                   onClick={() => setActiveItem(item.id)}
+                  className={`relative flex items-center pl-16 py-2.5 text-[14px] cursor-pointer transition-all ${
+                    activeItem === item.id 
+                      ? 'text-blue-600 font-semibold bg-blue-50/60' 
+                      : 'text-gray-500 hover:text-gray-800 hover:bg-gray-50'
+                  }`}
                 >
+                  {/* Vertical indicator for active item */}
+                  {activeItem === item.id && (
+                    <div className="absolute left-0 w-1 h-full bg-blue-600 rounded-r-full" />
+                  )}
                   {item.label}
                 </div>
               ))}
@@ -106,10 +133,12 @@ const Sidebar = () => {
         </div>
       </div>
 
-      <div className="sidebar-footer">
-        <button className="logout-btn">
-          <span className="material-icons logout-icon">logout</span>
-          <span>Logout</span>
+      <div className="sidebar-footer flex items-center gap-3 "
+           onClick={handleLogout}
+      >
+        <button className="logout-btn border-t border-gray-100 justify-center">
+          <span className="material-icons logout-icon font-semibold hover:bg-red-50">logout</span>
+          <span ><LogOut /></span>
         </button>
       </div>
     </div>

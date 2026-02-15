@@ -137,8 +137,8 @@
 }
 
 .copy-btn {
-  width: 32px;
-  height: 32px;
+  position: relative;
+  width: 30%;
   border: none;
   background: #f1f5f9;
   border-radius: 6px;
